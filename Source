@@ -1,0 +1,115 @@
+# Spam Bot by @0xzink
+# zink the chink
+
+# Import Modules
+from tkinter import *
+import pyautogui, time
+from colorama import Fore
+import socket
+
+
+# Boolean for check
+end = False
+
+# Main Screen
+print(Fore.LIGHTMAGENTA_EX + """"""""""\t\t\t         .                                                      .
+        .n                   .                 .                  n.
+  .   .dP                  dP                   9b                 9b.    .
+ 4    qXb         .       dX                     Xb       .        dXp     t
+dX.    9Xb      .dXb    __                         __    dXb.     dXP     .Xb
+9XXb._       _.dXXXXb dXXXXbo.                 .odXXXXb dXXXXb._       _.dXXP
+ 9XXXXXXXXXXXXXXXXXXXVXXXXXXXXOo.           .oOXXXXXXXXVXXXXXXXXXXXXXXXXXXXP
+  `9XXXXXXXXXXXXXXXXXXXXX'~   ~`OOO8b   d8OOO'~   ~`XXXXXXXXXXXXXXXXXXXXXP'
+    `9XXXXXXXXXXXP' `9XX'   DIE    `98v8P'  HUMAN   `XXP' `9XXXXXXXXXXXP'
+        ~~~~~~~       9X.          .db|db.          .XP       ~~~~~~~
+                        )b.  .dbo.dP'`v'`9b.odb.  .dX(
+                      ,dXXXXXXXXXXXb     dXXXXXXXXXXXb.
+                     dXXXXXXXXXXXP'   .   `9XXXXXXXXXXXb
+                    dXXXXXXXXXXXXb   d|b   dXXXXXXXXXXXXb
+                    9XXb'   `XXXXXb.dX|Xb.dXXXXX'   `dXXP
+                     `'      9XXXXXX(   )XXXXXXP      `'
+                              XXXX X.`v'.X XXXX
+                              XP^X'`b   d'`X^XX
+                              X. 9  `   '  P )X
+                              `b  `       '  d'""""""""""""""""")
+print(Fore.LIGHTCYAN_EX + "                                Zink Is King")
+
+# root = tkinter module
+root = Tk()
+
+#ui name & size
+root.geometry("300x130")
+root.title("Zink Login")
+
+# checks login
+def check():
+    if (name_entry.get() == "User") and (Password_entry.get() == "z1nk"):
+        print(Fore.GREEN + ">>> Successful login")
+        end = True
+        root.destroy()
+    else:
+        print(Fore.LIGHTRED_EX + "Failed login")
+
+# login ui
+Label(root, text="Login", font="aerial 15 bold").grid(row=0, column=3)
+
+name = Label(root, text="Username: ", fore="Black").grid(row=1, column=2)
+Password = Label(root, text="Password: ").grid(row=2, column=2)
+
+namevalue = StringVar()
+Pass_value = StringVar()
+
+name_entry = Entry(root, textvariable=namevalue)
+Password_entry = Entry(root, textvariable=Pass_value)
+
+name_entry.grid(row=1, column=3)
+Password_entry.grid(row=2,column=3)
+
+Button(text="Submit", command=check, bg="cyan").grid(row=7, column=3)
+
+root.mainloop()
+end = True
+
+# login success
+if end == True:
+    time.sleep(0.1)
+
+    # Adds 100 lines
+    cls = lambda: print('\n' * 5)
+    cls()
+    print(Fore.LIGHTMAGENTA_EX + "Welcome User")
+    bool(input(Fore.LIGHTCYAN_EX + "Press enter to continue: "))
+
+    # Ip checker (dw it only prints to ur screen lol)
+    def get_Host_name_IP():
+        try:
+            host_name = socket.gethostname()
+            host_ip = socket.gethostbyname(host_name)
+            print("\t\t\t\t\t\t\t\t\t\t\t\tHostname :  ", host_name)
+            print("\t\t\t\t\t\t\t\t\t\t\t\tIP : ", host_ip)
+        except:
+            print("Unable to get Hostname and IP")
+
+
+    # User Input
+    napdelay = int(input(Fore.LIGHTMAGENTA_EX + ">>> Start Delay: "))
+    name = input(">>> Content: ")
+    number = int(input(Fore.LIGHTMAGENTA_EX + ">>> Amount: "))
+
+# Add to "Spam1"
+    file = open("Spam1", "w")
+    for i in range(0, int(number)):
+        file.writelines(name)
+    file.close()
+
+    # Spam
+    time.sleep(napdelay)
+    f = open("Spam1", "r")
+    for word in f:
+        pyautogui.typewrite(word)
+        pyautogui.press("enter")
+
+else:
+    print("Error, please restart the programme")
+
+print(Fore.GREEN + "Successful run - Goodbye")
