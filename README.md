@@ -1,5 +1,5 @@
 # SpamBot
-Spams input of User "x" amt of times (1st month of py lol)
+Spams input of User "x" amt of times (new to py lol)
 
 
 Download modules:
