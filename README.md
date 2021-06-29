@@ -9,3 +9,5 @@ pip install pyautogui
 pip install time
 pip install colorama
 pip install socket
+
+Also link a file named "Spam1"
